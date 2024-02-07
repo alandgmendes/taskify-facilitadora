@@ -2,9 +2,10 @@ import { auth } from "@clerk/nextjs";
 
 const OrganizationIdPage = () =>{
     const { userId, orgId } = auth();
+    debugger;
     return(
         <div>
-            organization id page, orgid = {orgId} and userId = {userId}
+            organization id page
         </div>
     );
 }

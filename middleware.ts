@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export default authMiddleware({
   publicRoutes: ["/"],
   afterAuth(auth, req) {
+    debugger;
     if(auth.userId && auth.isPublicRoute) {
       let path = "/select-org";
       
@@ -16,12 +17,19 @@ export default authMiddleware({
     }
 
     if (!auth.userId && !auth.isPublicRoute) {
+      debugger;
+      console.log('aqui');
+      console.log(req.url);
       return redirectToSignIn({returnBackUrl: req.url});
     }
     
-    if (!auth.userId && !auth.orgId && req.nextUrl.pathname !== "/select-org"){
+    if (auth.userId && !auth.orgId && req.nextUrl.pathname !== "/select-org"){
       const orgSelection = new URL("/select-org", req.url);
       return NextResponse.redirect(orgSelection);
+    }
+
+    if (req.nextUrl.pathname === "/") {
+      return new Response("Welcome to the homepage!");
     }
   },
 });
