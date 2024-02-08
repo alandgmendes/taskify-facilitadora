@@ -20,30 +20,30 @@ const Navbar = () => {
                 </Button>
             </div>
             <div className="ml-auto flex items-center gap-x-2">
-                <OrganizationSwitcher 
+                <OrganizationSwitcher
                     hidePersonal
+                    afterCreateOrganizationUrl="/organization/:id"
                     afterLeaveOrganizationUrl="/select-org"
                     afterSelectOrganizationUrl="/organization/:id"
-                    afterCreateOrganizationUrl="/organization/:id"
                     appearance={{
                         elements: {
-                            rootBox: {
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center"
-                            },
+                        rootBox: {
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        },
                         },
                     }}
                 />
-                <UserButton 
+                <UserButton
                     afterSignOutUrl="/"
                     appearance={{
                         elements: {
-                            avatarBox: {
-                                height: 30,
-                                width: 30,
-                            },
-                        },
+                        avatarBox: {
+                            height: 30,
+                            width: 30,
+                        }
+                        }
                     }}
                 />
             </div>

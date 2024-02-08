@@ -11,7 +11,6 @@ import {
 
 import { cn } from "@/lib/utils";
 import { 
-  Accordion,
   AccordionContent,
   AccordionItem, 
   AccordionTrigger
@@ -70,35 +69,41 @@ export const NavItem = ({
   };
 
   return (
-    
     <AccordionItem
       value={organization.id}
       className="border-none"
     >
       <AccordionTrigger
         onClick={() => onExpand(organization.id)}
-        className={cn("flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
-        isActive && !isExpanded && "bg-sky-500/10 text-sky-700")}
+        className={cn(
+          "flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
+          isActive && !isExpanded && "bg-sky-500/10 text-sky-700"
+        )}
       >
-        <div className="flex items-center gap-x-2" >
+        <div className="flex items-center gap-x-2">
           <div className="w-7 h-7 relative">
-            <Image 
+            <Image
               fill
               src={organization.imageUrl}
-              alt={"Organization image"}
+              alt="Organization"
               className="rounded-sm object-cover"
             />
           </div>
-          <span className="font-medium text-sm">{organization.name}</span>
+          <span className="font-medium text-sm">
+            {organization.name}
+          </span>
         </div>
       </AccordionTrigger>
-      <AccordionContent>
+      <AccordionContent className="pt-1 text-neutral-700">
         {routes.map((route) => (
           <Button
             key={route.href}
             size="sm"
             onClick={() => onClick(route.href)}
-            className={cn("w-full font-normal justify-start pl-10 mb-1", pathname === route.href && "bg-sky-500/10 text-sky-700")}
+            className={cn(
+              "w-full font-normal justify-start pl-10 mb-1",
+              pathname === route.href && "bg-sky-500/10 text-sky-700"
+            )}
             variant="ghost"
           >
             {route.icon}

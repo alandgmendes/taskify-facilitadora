@@ -23,7 +23,7 @@ export const Sidebar = ({
     storageKey,
     {}
   );
-  
+
   const {
     organization: activeOrganization,
     isLoaded: isLoadedOrg
