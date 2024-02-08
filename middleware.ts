@@ -17,9 +17,6 @@ export default authMiddleware({
     }
 
     if (!auth.userId && !auth.isPublicRoute) {
-      debugger;
-      console.log('aqui');
-      console.log(req.url);
       return redirectToSignIn({returnBackUrl: req.url});
     }
     

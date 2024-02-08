@@ -23,7 +23,7 @@ export const Sidebar = ({
     storageKey,
     {}
   );
-
+  
   const {
     organization: activeOrganization,
     isLoaded: isLoadedOrg
@@ -40,7 +40,6 @@ export const Sidebar = ({
   const defaultAccordionValue: string[] = Object.keys(expanded)
     .reduce((acc: string[], key: string) => {
       if (expanded[key]) {
-        debugger;
         acc.push(key);
       }
 
