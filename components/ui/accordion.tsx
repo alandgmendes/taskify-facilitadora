@@ -6,7 +6,14 @@ import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Accordion = AccordionPrimitive.Root
+type AccordionProps = {
+  defaultValue?: never[] | string[];
+  type: "multiple";
+};
+
+const Accordion: React.FC<AccordionProps> = ({ defaultValue = [], type = "multiple", ...props }) => (
+  <AccordionPrimitive.Root defaultValue={defaultValue} type={type} {...props} />
+);
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
