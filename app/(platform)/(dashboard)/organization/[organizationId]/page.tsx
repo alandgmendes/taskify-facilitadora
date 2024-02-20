@@ -1,6 +1,5 @@
 import { auth } from "@clerk/nextjs";
 import { db } from "@/lib/db";
-import { createBoard } from "@/actions/create-board";
 import { Button } from "@/components/ui/button";
 import { Board } from "./board";
 import { Form } from "./form";
