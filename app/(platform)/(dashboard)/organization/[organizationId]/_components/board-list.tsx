@@ -26,7 +26,6 @@ export const BoardList = () => {
                             <HelpCircle 
                                 className="absolute bottom-2 right-2 h-[14px] w-[14px]"
                             />
-
                         </Hint>
                     </div>            
                 </FormPopover>
