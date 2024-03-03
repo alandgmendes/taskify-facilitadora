@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { createSafeAction } from "@/lib/create-safe-actions";
 import { CreateBoard } from "./schema";
+import { redirect } from "next/navigation";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
     const { userId, orgId } = auth();
@@ -47,7 +48,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
                 imageUserName,
             },
         });
-        await db.$disconnect();
     }catch(error){
         console.log(error);
         return {
@@ -56,9 +56,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
 
     revalidatePath(`/board/${board.id}`);
-    return { 
-        data: board
-    }
+    redirect(`/board/${board.id}`);
 }
 
 export const createBoard = createSafeAction(CreateBoard, handler);

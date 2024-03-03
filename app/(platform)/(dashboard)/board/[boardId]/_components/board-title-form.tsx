@@ -43,7 +43,6 @@ export const BoardTitleForm = ({
 
     const onSubmit = (formData: FormData) =>{
         const title = formData.get("title") as string;
-        console.log(formData.get("title"));
         debugger;
         execute({
             title,
