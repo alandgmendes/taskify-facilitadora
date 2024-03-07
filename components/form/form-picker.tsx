@@ -39,7 +39,6 @@ export const FormPicker =({
                     console.error("Failed to get images from unsplash");
                 }
             } catch(error){
-                console.log(error);
                 setImages(defaultImages);
             }
         }

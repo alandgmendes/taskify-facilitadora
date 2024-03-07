@@ -11,7 +11,7 @@ export const Form  = () =>{
         onSuccess: (data) => {
             console.log(data, "SUCCESS");
         },
-        onError: (error) =>{
+        onError: (error) =>
             console.log(error);
         },
     });
