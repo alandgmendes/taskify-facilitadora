@@ -11,6 +11,7 @@ export const Board = ({
     title,
     id
 }: BoardProps) => {
+    
     const deleteBoardWithId = deleteBoard.bind(null, { id});
     return(
         <form action={deleteBoardWithId} className="flex items-center gap-x-2">
