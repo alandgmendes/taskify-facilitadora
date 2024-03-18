@@ -1,8 +1,10 @@
-"use client" ;
+"use client";
+
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { useLocalStorage } from "usehooks-ts";
 import { useOrganization, useOrganizationList } from "@clerk/nextjs";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -34,20 +36,15 @@ export const Sidebar = ({
       infinite: true,
     },
   });
-  
-  let defaultAccordionValue: string[];
 
-  if (expanded && typeof expanded === 'object') {
-    defaultAccordionValue = Object.keys(expanded)
-      .reduce((acc: string[], key: string) => {
-        if (expanded[key]) {
-          acc.push(key);
-        }
-        return acc;
-      }, []);
-  } else {
-    defaultAccordionValue = ['no org', 'no org'];
-  }
+  const defaultAccordionValue: string[] = Object.keys(expanded)
+    .reduce((acc: string[], key: string) => {
+      if (expanded[key]) {
+        acc.push(key);
+      }
+
+      return acc;
+  }, []);
 
   const onExpand = (id: string) => {
     setExpanded((curr) => ({
