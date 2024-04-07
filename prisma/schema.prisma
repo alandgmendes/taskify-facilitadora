@@ -1,52 +1,52 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
 model Board {
-  id              String @id @default(uuid())
+  id              String     @id @default(uuid())
   title           String
   orgId           String
   imageId         String
-  imageThumbUrl   String @db.Text
-  imageFullUrl    String @db.Text
-  lists           List []
-  imageUserName   String @db.Text
-  imageLinkHTML   String @db.Text  
-  createdAt       DateTime @default(now()) 
-  updatedAt       DateTime @updatedAt
+  imageThumbUrl   String
+  imageFullUrl    String
+  lists           List[]
+  imageUserName   String
+  imageLinkHTML   String
+  createdAt       DateTime   @default(now()) 
+  updatedAt       DateTime   @updatedAt
+
+  @@map("Board")
 }
 
 model List { 
-  id              String @id @default(uuid())
+  id              String     @id @default(uuid())
   title           String
   order           Int 
-  cards           Card []
+  cards           Card[]
   boardId         String
-  board           Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  createdAt       DateTime @default(now()) 
-  updatedAt       DateTime @updatedAt
+  board           Board      @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now()) 
+  updatedAt       DateTime   @updatedAt
 
   @@index([boardId])
+  @@map("List") 
 }
 
 model Card {
-  id              String @id @default(uuid())
+  id              String     @id @default(uuid())
   title           String
   order           Int   
-  description     String? @db.Text
+  description     String?
   listId          String
-  list            List @relation(fields: [listId], references: [id], onDelete: Cascade)
-  createdAt       DateTime @default(now()) 
-  updatedAt       DateTime @updatedAt         
+  list            List       @relation(fields: [listId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now()) 
+  updatedAt       DateTime   @updatedAt         
 
   @@index([listId])
+  @@map("Card")
 }
